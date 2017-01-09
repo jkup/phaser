@@ -8959,7 +8959,7 @@ webpackJsonp([0],[
 	      this.game.load.image('sky', 'assets/images/sky.png');
 	      this.game.load.image('ground', 'assets/images/platform.png');
 	      this.game.load.image('star', 'assets/images/star.png');
-	      this.game.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
+	      this.game.load.spritesheet('zombie', 'assets/images/zombie.png', 53.75, 64.8);
 	    }
 	  }, {
 	    key: 'create',
@@ -9051,7 +9051,7 @@ webpackJsonp([0],[
 	      ledge.body.immovable = true;
 
 	      // The player and its settings
-	      this.player = this.game.add.sprite(32, this.game.world.height - 150, 'dude');
+	      this.player = this.game.add.sprite(32, this.game.world.height - 150, 'zombie');
 
 	      //  We need to enable physics on the player
 	      this.game.physics.arcade.enable(this.player);

@@ -7,7 +7,7 @@ export default class extends Phaser.State {
     this.game.load.image('sky', 'assets/images/sky.png')
     this.game.load.image('ground', 'assets/images/platform.png')
     this.game.load.image('star', 'assets/images/star.png')
-    this.game.load.spritesheet('dude', 'assets/images/dude.png', 32, 48)
+    this.game.load.spritesheet('zombie', 'assets/images/zombie.png', 53.75, 64.8)
   }
 
   create () {

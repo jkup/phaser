@@ -39,7 +39,7 @@ export default class extends Phaser.State {
     ledge.body.immovable = true
 
     // The player and its settings
-    this.player = this.game.add.sprite(32, this.game.world.height - 150, 'dude')
+    this.player = this.game.add.sprite(32, this.game.world.height - 150, 'zombie')
 
     //  We need to enable physics on the player
     this.game.physics.arcade.enable(this.player)
