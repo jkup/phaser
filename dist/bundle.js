@@ -9021,8 +9021,6 @@ webpackJsonp([0],[
 
 	var _phaser2 = _interopRequireDefault(_phaser);
 
-	var _utils = __webpack_require__(/*! ../utils */ 308);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9048,7 +9046,6 @@ webpackJsonp([0],[
 	    value: function preload() {
 	      this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
 	      this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
-	      (0, _utils.centerGameObjects)([this.loaderBg, this.loaderBar]);
 
 	      this.load.setPreloadSprite(this.loaderBar);
 	      //
@@ -9069,24 +9066,7 @@ webpackJsonp([0],[
 	exports.default = _class;
 
 /***/ },
-/* 308 */
-/*!**********************!*\
-  !*** ./src/utils.js ***!
-  \**********************/
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var centerGameObjects = exports.centerGameObjects = function centerGameObjects(objects) {
-	  objects.forEach(function (object) {
-	    object.anchor.setTo(0.5);
-	  });
-	};
-
-/***/ },
+/* 308 */,
 /* 309 */
 /*!****************************!*\
   !*** ./src/states/Game.js ***!
