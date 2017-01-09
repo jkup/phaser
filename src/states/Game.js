@@ -1,29 +1,39 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
-import Mushroom from '../sprites/Mushroom'
 
 export default class extends Phaser.State {
   init () {}
   preload () {}
 
   create () {
-    const bannerText = 'Phaser + ES6 + Webpack'
-    let banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText)
-    banner.font = 'Bangers'
-    banner.padding.set(10, 16)
-    banner.fontSize = 40
-    banner.fill = '#77BFA3'
-    banner.smoothed = false
-    banner.anchor.setTo(0.5)
+    this.game.physics.startSystem(Phaser.Physics.ARCADE)
 
-    this.mushroom = new Mushroom({
-      game: this,
-      x: this.world.centerX,
-      y: this.world.centerY,
-      asset: 'mushroom'
-    })
+    //  A simple background for our game
+    this.game.add.sprite(0, 0, 'sky')
 
-    this.game.add.existing(this.mushroom)
+    //  The platforms group contains the ground and the 2 ledges we can jump on
+    let platforms = this.game.add.group()
+
+    //  We will enable physics for any object that is created in this group
+    platforms.enableBody = true
+
+    // Here we create the ground.
+    let ground = platforms.create(0, this.game.world.height - 64, 'ground')
+
+    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    ground.scale.setTo(2, 2)
+
+    //  This stops it from falling away when you jump on it
+    ground.body.immovable = true
+
+    //  Now let's create two ledges
+    let ledge = platforms.create(400, 400, 'ground')
+
+    ledge.body.immovable = true
+
+    ledge = platforms.create(-150, 250, 'ground')
+
+    ledge.body.immovable = true
   }
 
   render () {

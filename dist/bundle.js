@@ -8877,7 +8877,7 @@ webpackJsonp([0],[
 
 	var _Splash2 = _interopRequireDefault(_Splash);
 
-	var _Game = __webpack_require__(/*! ./states/Game */ 309);
+	var _Game = __webpack_require__(/*! ./states/Game */ 308);
 
 	var _Game2 = _interopRequireDefault(_Game);
 
@@ -8978,9 +8978,6 @@ webpackJsonp([0],[
 
 	      var text = this.add.text(this.world.centerX, this.world.centerY, 'loading fonts', { font: '16px Arial', fill: '#dddddd', align: 'center' });
 	      text.anchor.setTo(0.5, 0.5);
-
-	      this.load.image('loaderBg', './assets/images/loader-bg.png');
-	      this.load.image('loaderBar', './assets/images/loader-bar.png');
 	    }
 	  }, {
 	    key: 'render',
@@ -9044,14 +9041,10 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'preload',
 	    value: function preload() {
-	      this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
-	      this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
-
-	      this.load.setPreloadSprite(this.loaderBar);
-	      //
-	      // load your assets
-	      //
-	      this.load.image('mushroom', 'assets/images/mushroom2.png');
+	      this.game.load.image('sky', 'assets/images/sky.png');
+	      this.game.load.image('ground', 'assets/images/platform.png');
+	      this.game.load.image('star', 'assets/images/star.png');
+	      this.game.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
 	    }
 	  }, {
 	    key: 'create',
@@ -9066,8 +9059,7 @@ webpackJsonp([0],[
 	exports.default = _class;
 
 /***/ },
-/* 308 */,
-/* 309 */
+/* 308 */
 /*!****************************!*\
   !*** ./src/states/Game.js ***!
   \****************************/
@@ -9084,10 +9076,6 @@ webpackJsonp([0],[
 	var _phaser = __webpack_require__(/*! phaser */ 303);
 
 	var _phaser2 = _interopRequireDefault(_phaser);
-
-	var _Mushroom = __webpack_require__(/*! ../sprites/Mushroom */ 310);
-
-	var _Mushroom2 = _interopRequireDefault(_Mushroom);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9116,23 +9104,34 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'create',
 	    value: function create() {
-	      var bannerText = 'Phaser + ES6 + Webpack';
-	      var banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText);
-	      banner.font = 'Bangers';
-	      banner.padding.set(10, 16);
-	      banner.fontSize = 40;
-	      banner.fill = '#77BFA3';
-	      banner.smoothed = false;
-	      banner.anchor.setTo(0.5);
+	      this.game.physics.startSystem(_phaser2.default.Physics.ARCADE);
 
-	      this.mushroom = new _Mushroom2.default({
-	        game: this,
-	        x: this.world.centerX,
-	        y: this.world.centerY,
-	        asset: 'mushroom'
-	      });
+	      //  A simple background for our game
+	      this.game.add.sprite(0, 0, 'sky');
 
-	      this.game.add.existing(this.mushroom);
+	      //  The platforms group contains the ground and the 2 ledges we can jump on
+	      var platforms = this.game.add.group();
+
+	      //  We will enable physics for any object that is created in this group
+	      platforms.enableBody = true;
+
+	      // Here we create the ground.
+	      var ground = platforms.create(0, this.game.world.height - 64, 'ground');
+
+	      //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+	      ground.scale.setTo(2, 2);
+
+	      //  This stops it from falling away when you jump on it
+	      ground.body.immovable = true;
+
+	      //  Now let's create two ledges
+	      var ledge = platforms.create(400, 400, 'ground');
+
+	      ledge.body.immovable = true;
+
+	      ledge = platforms.create(-150, 250, 'ground');
+
+	      ledge.body.immovable = true;
 	    }
 	  }, {
 	    key: 'render',
@@ -9145,63 +9144,6 @@ webpackJsonp([0],[
 
 	  return _class;
 	}(_phaser2.default.State);
-
-	exports.default = _class;
-
-/***/ },
-/* 310 */
-/*!*********************************!*\
-  !*** ./src/sprites/Mushroom.js ***!
-  \*********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _phaser = __webpack_require__(/*! phaser */ 303);
-
-	var _phaser2 = _interopRequireDefault(_phaser);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _class = function (_Phaser$Sprite) {
-	  _inherits(_class, _Phaser$Sprite);
-
-	  function _class(_ref) {
-	    var game = _ref.game,
-	        x = _ref.x,
-	        y = _ref.y,
-	        asset = _ref.asset;
-
-	    _classCallCheck(this, _class);
-
-	    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, x, y, asset));
-
-	    _this.game = game;
-	    _this.anchor.setTo(0.5);
-	    return _this;
-	  }
-
-	  _createClass(_class, [{
-	    key: 'update',
-	    value: function update() {
-	      this.angle += 1;
-	    }
-	  }]);
-
-	  return _class;
-	}(_phaser2.default.Sprite);
 
 	exports.default = _class;
 
