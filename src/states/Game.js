@@ -1,4 +1,3 @@
-/* globals __DEV__ */
 import Phaser from 'phaser'
 
 export default class extends Phaser.State {
@@ -47,7 +46,7 @@ export default class extends Phaser.State {
 
     //  Player physics properties. Give the little guy a slight bounce.
     this.player.body.bounce.y = 0.2
-    this.player.body.gravity.y = 300
+    this.player.body.gravity.y = 200
     this.player.body.collideWorldBounds = true
 
     //  Our two animations, walking left and right.
@@ -59,7 +58,8 @@ export default class extends Phaser.State {
 
   update () {
     //  Collide the player and the stars with the platforms
-    this.game.physics.arcade.collide(this.player, this.platforms)
+    let hitPlatform = this.game.physics.arcade.collide(this.player, this.platforms)
+
     //  Reset the players velocity (movement)
     this.player.body.velocity.x = 0
 
@@ -81,7 +81,7 @@ export default class extends Phaser.State {
     }
 
     //  Allow the player to jump if they are touching the ground.
-    if (this.cursors.up.isDown && this.player.body.touching.down) {
+    if (this.cursors.up.isDown && this.player.body.touching.down && hitPlatform) {
       this.player.body.velocity.y = -350
     }
   }

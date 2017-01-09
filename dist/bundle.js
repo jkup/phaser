@@ -8869,15 +8869,11 @@ webpackJsonp([0],[
 
 	var _phaser2 = _interopRequireDefault(_phaser);
 
-	var _Boot = __webpack_require__(/*! ./states/Boot */ 305);
-
-	var _Boot2 = _interopRequireDefault(_Boot);
-
-	var _Splash = __webpack_require__(/*! ./states/Splash */ 307);
+	var _Splash = __webpack_require__(/*! ./states/Splash */ 305);
 
 	var _Splash2 = _interopRequireDefault(_Splash);
 
-	var _Game = __webpack_require__(/*! ./states/Game */ 308);
+	var _Game = __webpack_require__(/*! ./states/Game */ 306);
 
 	var _Game2 = _interopRequireDefault(_Game);
 
@@ -8900,11 +8896,10 @@ webpackJsonp([0],[
 
 	    var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, width, height, _phaser2.default.CANVAS, 'content', null));
 
-	    _this.state.add('Boot', _Boot2.default, false);
 	    _this.state.add('Splash', _Splash2.default, false);
 	    _this.state.add('Game', _Game2.default, false);
 
-	    _this.state.start('Boot');
+	    _this.state.start('Splash');
 	    return _this;
 	  }
 
@@ -8921,86 +8916,6 @@ webpackJsonp([0],[
 /* 303 */,
 /* 304 */,
 /* 305 */
-/*!****************************!*\
-  !*** ./src/states/Boot.js ***!
-  \****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _phaser = __webpack_require__(/*! phaser */ 303);
-
-	var _phaser2 = _interopRequireDefault(_phaser);
-
-	var _webfontloader = __webpack_require__(/*! webfontloader */ 306);
-
-	var _webfontloader2 = _interopRequireDefault(_webfontloader);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _class = function (_Phaser$State) {
-	  _inherits(_class, _Phaser$State);
-
-	  function _class() {
-	    _classCallCheck(this, _class);
-
-	    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-	  }
-
-	  _createClass(_class, [{
-	    key: 'init',
-	    value: function init() {
-	      this.stage.backgroundColor = '#EDEEC9';
-	      this.fontsReady = false;
-	      this.fontsLoaded = this.fontsLoaded.bind(this);
-	    }
-	  }, {
-	    key: 'preload',
-	    value: function preload() {
-	      _webfontloader2.default.load({
-	        google: {
-	          families: ['Bangers']
-	        },
-	        active: this.fontsLoaded
-	      });
-
-	      var text = this.add.text(this.world.centerX, this.world.centerY, 'loading fonts', { font: '16px Arial', fill: '#dddddd', align: 'center' });
-	      text.anchor.setTo(0.5, 0.5);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      if (this.fontsReady) {
-	        this.state.start('Splash');
-	      }
-	    }
-	  }, {
-	    key: 'fontsLoaded',
-	    value: function fontsLoaded() {
-	      this.fontsReady = true;
-	    }
-	  }]);
-
-	  return _class;
-	}(_phaser2.default.State);
-
-	exports.default = _class;
-
-/***/ },
-/* 306 */,
-/* 307 */
 /*!******************************!*\
   !*** ./src/states/Splash.js ***!
   \******************************/
@@ -9059,7 +8974,7 @@ webpackJsonp([0],[
 	exports.default = _class;
 
 /***/ },
-/* 308 */
+/* 306 */
 /*!****************************!*\
   !*** ./src/states/Game.js ***!
   \****************************/
@@ -9083,8 +8998,7 @@ webpackJsonp([0],[
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* globals __DEV__ */
-
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _class = function (_Phaser$State) {
 	  _inherits(_class, _Phaser$State);
@@ -9144,7 +9058,7 @@ webpackJsonp([0],[
 
 	      //  Player physics properties. Give the little guy a slight bounce.
 	      this.player.body.bounce.y = 0.2;
-	      this.player.body.gravity.y = 300;
+	      this.player.body.gravity.y = 200;
 	      this.player.body.collideWorldBounds = true;
 
 	      //  Our two animations, walking left and right.
@@ -9157,7 +9071,8 @@ webpackJsonp([0],[
 	    key: 'update',
 	    value: function update() {
 	      //  Collide the player and the stars with the platforms
-	      this.game.physics.arcade.collide(this.player, this.platforms);
+	      var hitPlatform = this.game.physics.arcade.collide(this.player, this.platforms);
+
 	      //  Reset the players velocity (movement)
 	      this.player.body.velocity.x = 0;
 
@@ -9179,7 +9094,7 @@ webpackJsonp([0],[
 	      }
 
 	      //  Allow the player to jump if they are touching the ground.
-	      if (this.cursors.up.isDown && this.player.body.touching.down) {
+	      if (this.cursors.up.isDown && this.player.body.touching.down && hitPlatform) {
 	        this.player.body.velocity.y = -350;
 	      }
 	    }
