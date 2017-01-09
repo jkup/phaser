@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/jkup/phaser/issues"
   },
-  "homepage": "https://github.com/jkup/phaser#readme"
+  "homepage": "https://github.com/jkup/phaser#readme",
+  "dependencies": {
+    "phaser": "^2.6.2"
+  }
 }
