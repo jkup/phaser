@@ -2,25 +2,30 @@
   "name": "phaser-project",
   "version": "0.0.1",
   "description": "First phraser project",
+  "author": "Jon Kuperman",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack",
+    "deploy": "webpack --config webpack.production.config.js",
+    "test": "standard"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jkup/phaser.git"
-  },
-  "keywords": [
-    "phaser",
-    "game"
-  ],
-  "author": "Jon Kuperman",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jkup/phaser/issues"
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "browser-sync": "^2.18.2",
+    "browser-sync-webpack-plugin": "^1.1.3",
+    "eslint": "^3.12.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "expose-loader": "^0.7.1",
+    "webfontloader": "^1.6.27",
+    "webpack": "^1.13.3"
   },
-  "homepage": "https://github.com/jkup/phaser#readme",
   "dependencies": {
-    "phaser": "^2.6.2"
+    "phaser-ce": "^2.7.1"
   }
 }
